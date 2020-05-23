@@ -1,0 +1,48 @@
+<template>
+    <lightning-button label="Prime" onclick={prime} value="prime"
+        icon-name="action:new_lead"
+        variant="bare"
+        icon-class="slds-m-around_medium">
+    </lightning-button>
+    <lightning-button label="Micro" onclick={micro} 
+        icon-name="action:submit_for_approval"
+        variant="bare"
+        icon-class="slds-m-around_medium">
+    </lightning-button>
+    <lightning-button label="Mini" icon-name="action:add_contact" onclick={mini} 
+        variant="bare"
+        icon-class="slds-m-around_medium">      
+</lightning-button>
+<template if:true={f}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <!-- modal header start -->
+            <header class="slds-modal__header">
+             
+               <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Add Car Details</h2>
+            </header>
+     
+        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+        <lightning-input type="text" value={name} label="enter the Driver Name" onchange={nChange}></lightning-input>
+        <lightning-input type="text" value={num} label="enter the Car Number" onchange={cnChange}></lightning-input>
+        <lightning-input type="number" value={phone} label="enter the Phone Number of Driver" onchange={pChange}></lightning-input>
+        <lightning-combobox
+            name="car"
+            label="Car Model"
+            value={car}
+            placeholder="Select Car Model"
+            options={options}
+            onchange={handleChange} ></lightning-combobox>
+        <lightning-button label="Add Details" onclick={add}></lightning-button>
+    </div></div>
+    </section>
+ </template>
+ <template for:each={cab} for:item='e' for:index="i">      
+    <lightning-card key={e} title={e.Vehicle_Number__c}>
+        {e.Car_type__c}
+        {e.Driver_Number__c}
+        {e.Car_model__c}
+        {e.Car_type__c}
+    </lightning-card>  
+</template>
+</template>
